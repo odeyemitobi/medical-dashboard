@@ -12,6 +12,14 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        sans: ['var(--font-manrope)'],
+      },
+      screens: {
+        maxLg: '1920px',
+        xlg: '1680px',
+        xxl: '1440px',
+      },
     },
   },
   plugins: [],
