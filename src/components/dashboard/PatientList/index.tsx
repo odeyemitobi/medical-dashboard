@@ -17,15 +17,10 @@ export const PatientList: React.FC<PatientListProps> = ({
     <div className="w-full lg:w-72 bg-white rounded-2xl p-4">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-[#072635]">Patients</h2>
-        <div className="relative">
+        <div className="">
           <BiSearch
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            className="text-gray-400"
             size={20}
-          />
-          <input
-            type="text"
-            placeholder="Search"
-            className="pl-10 pr-4 py-2 rounded-full bg-gray-100 w-full focus:outline-none"
           />
         </div>
       </div>
