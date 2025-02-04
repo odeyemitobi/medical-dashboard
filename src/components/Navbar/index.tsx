@@ -12,7 +12,7 @@ import { PiCalendarBlank } from "react-icons/pi";
 import { FiMessageSquare } from "react-icons/fi";
 import { MdOutlineCreditCard } from "react-icons/md";
 
-export const Navigation: React.FC = () => {
+export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 

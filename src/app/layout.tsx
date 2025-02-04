@@ -1,6 +1,6 @@
 import { Manrope } from 'next/font/google';
 import type { Metadata } from 'next';
-import { Navigation } from '@/components/navigation';
+import { Navbar } from '@/components/Navbar';
 import './globals.css';
 
 const manrope = Manrope({ 
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${manrope.variable} font-sans bg-[#F6F7F8] opacity-100`} suppressHydrationWarning={true}>
         <div className="min-h-screen">
-          <Navigation />
+          <Navbar />
           <main className="mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-24">
             {children}
           </main>

@@ -1,36 +1,40 @@
+import type React from "react"
+
 export interface Patient {
-  id: string;
-  name: string;
-  age: number;
-  gender: string;
-  image: string;
-  dob: string;
-  contact: string;
-  insurance: string;
-  bloodPressure: BloodPressureData[];
-  vitals: VitalsData;
-  diagnoses: Diagnosis[];
+  id: string
+  name: string
+  age: number
+  gender: string
+  imageUrl: string
 }
 
-export interface PatientsListProps {
-  patients: Patient[];
-  selectedPatientId: string;
-}
-
-export interface BloodPressureData {
-  date: string;
-  systolic: number;
-  diastolic: number;
-}
-
-export interface VitalsData {
-  respiratoryRate: number;
-  temperature: number;
-  heartRate: number;
+export interface VitalSigns {
+  bloodPressure: {
+    systolic: number[]
+    diastolic: number[]
+    dates: string[]
+  }
+  respiratoryRate: number
+  temperature: number
+  heartRate: number
 }
 
 export interface Diagnosis {
-  problem: string;
-  description: string;
-  status: "Active" | "Inactive" | "Under Observation" | "Cured";
+  condition: string
+  description: string
+  status: string
+}
+
+export interface BloodPressureData {
+  dates: string[]
+  systolic: number[]
+  diastolic: number[]
+}
+
+export interface NavbarProps {
+  className?: string
+}
+
+export interface LayoutProps {
+  children: React.ReactNode
 }
