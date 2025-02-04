@@ -1,9 +1,15 @@
-import React from 'react';
+"use client"
+
 
 export default function Home() {
+  
+
   return (
     <div>
-      
+      <div>
+        Yo
+      </div>
     </div>
-  );
+  )
 }
+

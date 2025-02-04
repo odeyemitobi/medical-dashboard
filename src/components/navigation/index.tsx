@@ -93,7 +93,7 @@ export const Navigation: React.FC = () => {
   return (
     <>
       <nav className="fixed top-4 left-4 right-4 z-50">
-        <div className="bg-white rounded-full shadow-sm px-4 py-3 md:px-6 md:py-4 mx-auto max-w-[98%]">
+        <div className="bg-white rounded-full shadow-md px-4 py-3 md:px-6 md:py-4 mx-auto max-w-[98%]">
           <div className="flex items-center justify-between">
             {/* Logo Section */}
             <div className="flex items-center">

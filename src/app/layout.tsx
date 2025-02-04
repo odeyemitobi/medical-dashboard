@@ -1,4 +1,3 @@
-// app/layout.tsx
 import { Manrope } from 'next/font/google';
 import type { Metadata } from 'next';
 import { Navigation } from '@/components/navigation';
@@ -21,10 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} font-sans`} suppressHydrationWarning={true}>
-        <div className="min-h-screen bg-gray-50">
+      <body className={`${manrope.variable} font-sans bg-[#F6F7F8] opacity-100`} suppressHydrationWarning={true}>
+        <div className="min-h-screen">
           <Navigation />
-          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <main className="mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-24">
             {children}
           </main>
         </div>
