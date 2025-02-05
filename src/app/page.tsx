@@ -6,59 +6,47 @@ import { DiagnosisHistory } from "@/components/dashboard/DiagnosisHistory"
 import { DiagnosticList } from "@/components/dashboard/DiagnosticList"
 import { PatientDetails } from "@/components/dashboard/PatientDetails"
 import { LabResults } from "@/components/dashboard/LabResults"
-import type { Patient, VitalSigns, Diagnosis } from "@/types"
+import { fetchPatients } from "@/lib/api"
+import type { Patient } from "@/types"
 
 export default function Home() {
   const [patients, setPatients] = useState<Patient[]>([])
   const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null)
-  const [vitalSigns, setVitalSigns] = useState<VitalSigns | null>(null)
-  const [diagnoses, setDiagnoses] = useState<Diagnosis[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const fetchData = async () => {
+    const loadPatients = async () => {
       try {
-        const response = await fetch("https://fedskillstest.coalitiontechnologies.workers.dev", {
-          headers: {
-            Authorization: "Bearer YOUR_AUTH_TOKEN",
-          },
-        })
-        const data = await response.json()
-        // Handle the data accordingly
+        const data = await fetchPatients()
+        setPatients(data)
         setLoading(false)
-      } catch (error) {
-        console.error("Error fetching data:", error)
+      } catch {
+        setError("Failed to load patients")
         setLoading(false)
       }
     }
 
-    fetchData()
+    loadPatients()
   }, [])
-
-  // For demo purposes, using static data
-  const mockPatients = [
-    {
-      id: "1",
-      name: "Jessica Taylor",
-      age: 28,
-      gender: "Female",
-      imageUrl:
-        "/snr-doc.png",
-    },
-    // Add more mock patients...
-  ]
 
   return (
     <div className="flex flex-col lg:flex-row gap-6">
-      <PatientList patients={mockPatients} onSelectPatient={setSelectedPatient} />
+      <PatientList
+        patients={patients}
+        onSelectPatient={setSelectedPatient}
+        selectedPatient={selectedPatient}
+        loading={loading}
+        error={error}
+      />
       <div className="flex-1 space-y-6">
-        <DiagnosisHistory vitalSigns={vitalSigns} />
-        <DiagnosticList diagnoses={diagnoses} />
+        <DiagnosisHistory diagnosisHistory={selectedPatient?.diagnosis_history?.[0]} />
+        <DiagnosticList diagnostics={selectedPatient?.diagnostic_list || []} />
       </div>
       <div className="w-full lg:w-80">
         <div className="space-y-6">
           <PatientDetails patient={selectedPatient} />
-          <LabResults />
+          <LabResults labResults={selectedPatient?.lab_results || []} />
         </div>
       </div>
     </div>

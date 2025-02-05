@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import type { BloodPressureData } from "@/types";
-import type React from "react"; // Added import for React
+import type React from "react";
 
 interface BloodPressureChartProps {
   data: BloodPressureData;

@@ -13,7 +13,7 @@ export const PatientDetails: React.FC<PatientDetailsProps> = ({ patient }) => {
     <div className="bg-white rounded-2xl p-6">
       <div className="flex flex-col items-center mb-6">
         <Image
-          src={patient.imageUrl || "/placeholder.svg"}
+          src={patient.profile_picture || "/placeholder.svg"}
           alt={patient.name}
           width={120}
           height={120}
@@ -25,7 +25,7 @@ export const PatientDetails: React.FC<PatientDetailsProps> = ({ patient }) => {
       <div className="space-y-4">
         <div>
           <p className="text-sm text-gray-600">Date Of Birth</p>
-          <p className="font-semibold">August 23, 1996</p>
+          <p className="font-semibold">{patient.date_of_birth}</p>
         </div>
         <div>
           <p className="text-sm text-gray-600">Gender</p>
@@ -33,15 +33,15 @@ export const PatientDetails: React.FC<PatientDetailsProps> = ({ patient }) => {
         </div>
         <div>
           <p className="text-sm text-gray-600">Contact Info.</p>
-          <p className="font-semibold">(415) 555-1234</p>
+          <p className="font-semibold">{patient.phone_number}</p>
         </div>
         <div>
           <p className="text-sm text-gray-600">Emergency Contacts</p>
-          <p className="font-semibold">(415) 555-5678</p>
+          <p className="font-semibold">{patient.emergency_contact}</p>
         </div>
         <div>
           <p className="text-sm text-gray-600">Insurance Provider</p>
-          <p className="font-semibold">Sunrise Health Assurance</p>
+          <p className="font-semibold">{patient.insurance_type}</p>
         </div>
       </div>
 
