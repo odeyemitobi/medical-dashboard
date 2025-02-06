@@ -1,8 +1,8 @@
+import React, { useState } from "react";
 import Image from "next/image";
 import { BiSearch } from "react-icons/bi";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import type { Patient } from "@/types";
-import type React from "react";
 
 interface PatientListProps {
   patients: Patient[];
@@ -19,6 +19,12 @@ export const PatientList: React.FC<PatientListProps> = ({
   loading,
   error,
 }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredPatients = patients.filter((patient) =>
+    patient.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="w-full lg:w-72 bg-white rounded-2xl p-4 flex flex-col lg:h-[calc(100vh-9rem)] h-[calc(100vh-33rem)]">
       <div className="mb-6">
@@ -31,6 +37,8 @@ export const PatientList: React.FC<PatientListProps> = ({
           <input
             type="text"
             placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10 pr-4 py-2 rounded-full bg-gray-100 w-full focus:outline-none"
           />
         </div>
@@ -41,14 +49,16 @@ export const PatientList: React.FC<PatientListProps> = ({
           <p className="text-center text-gray-500">Loading patients...</p>
         ) : error ? (
           <p className="text-center text-red-500">{error}</p>
-        ) : patients.length === 0 ? (
-          <p className="text-center text-gray-500">No patients currently</p>
+        ) : filteredPatients.length === 0 ? (
+          <p className="text-center text-gray-500">
+            {searchQuery ? "No matching patients found" : "No patients currently"}
+          </p>
         ) : (
           <div className="space-y-4">
-            {patients.map((patient) => (
+            {filteredPatients.map((patient) => (
               <div
                 key={patient.name}
-                className={`flex items-center justify-between p-2 cursor-pointer ${
+                className={`flex items-center justify-between p-2 cursor-pointer hover:bg-gray-50 rounded-lg transition-colors ${
                   selectedPatient?.name === patient.name
                     ? "bg-[#D8FCF7]"
                     : ""
