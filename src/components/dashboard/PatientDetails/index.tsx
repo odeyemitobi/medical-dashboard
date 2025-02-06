@@ -1,14 +1,23 @@
 import React from "react";
 import Image from "next/image";
-import { PiCalendarBlank, PiGenderIntersex, PiPhone, PiFirstAid, PiShieldStar } from "react-icons/pi";
+import {
+  PiCalendarBlank,
+  PiGenderIntersex,
+  PiPhone,
+  PiFirstAid,
+  PiShieldStar,
+} from "react-icons/pi";
 import type { Patient } from "@/types";
 
 interface PatientDetailsProps {
   patient: Patient | null;
 }
 
-// InfoItem component to reduce repetition
-const InfoItem = ({ icon: Icon, label, value }: { 
+const InfoItem = ({
+  icon: Icon,
+  label,
+  value,
+}: {
   icon: React.ElementType;
   label: string;
   value: string;
@@ -28,11 +37,23 @@ export const PatientDetails: React.FC<PatientDetailsProps> = ({ patient }) => {
   if (!patient) return null;
 
   const patientInfo = [
-    { icon: PiCalendarBlank, label: "Date Of Birth", value: patient.date_of_birth },
+    {
+      icon: PiCalendarBlank,
+      label: "Date Of Birth",
+      value: patient.date_of_birth,
+    },
     { icon: PiGenderIntersex, label: "Gender", value: patient.gender },
     { icon: PiPhone, label: "Contact Info.", value: patient.phone_number },
-    { icon: PiFirstAid, label: "Emergency Contacts", value: patient.emergency_contact },
-    { icon: PiShieldStar, label: "Insurance Provider", value: patient.insurance_type },
+    {
+      icon: PiFirstAid,
+      label: "Emergency Contacts",
+      value: patient.emergency_contact,
+    },
+    {
+      icon: PiShieldStar,
+      label: "Insurance Provider",
+      value: patient.insurance_type,
+    },
   ];
 
   return (
@@ -50,7 +71,7 @@ export const PatientDetails: React.FC<PatientDetailsProps> = ({ patient }) => {
 
       <div className="space-y-4">
         {patientInfo.map((info) => (
-          <InfoItem 
+          <InfoItem
             key={info.label}
             icon={info.icon}
             label={info.label}
