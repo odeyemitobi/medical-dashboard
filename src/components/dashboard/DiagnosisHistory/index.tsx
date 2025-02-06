@@ -51,20 +51,20 @@ export const DiagnosisHistory: React.FC<DiagnosisHistoryProps> = ({
       levels: diagnosisHistory.respiratory_rate.levels,
     },
     {
-      bgColor: "bg-[#FFE6E9]",
-      icon: "/heart.svg",
-      title: "Heart Rate",
-      value: diagnosisHistory.heart_rate.value,
-      unit: "bpm",
-      levels: diagnosisHistory.heart_rate.levels,
-    },
-    {
       bgColor: "bg-[#FFE6F1]",
       icon: "/temp.svg",
       title: "Temperature",
       value: diagnosisHistory.temperature.value,
       unit: "°F",
       levels: diagnosisHistory.temperature.levels,
+    },
+    {
+      bgColor: "bg-[#FFE6E9]",
+      icon: "/heart.svg",
+      title: "Heart Rate",
+      value: diagnosisHistory.heart_rate.value,
+      unit: "bpm",
+      levels: diagnosisHistory.heart_rate.levels,
     },
   ];
 
@@ -74,14 +74,8 @@ export const DiagnosisHistory: React.FC<DiagnosisHistoryProps> = ({
         Diagnosis History
       </h2>
 
-      <div className="h-64 bg-gray-50 rounded-xl mb-6">
-        <BloodPressureChart
-          data={{
-            dates: [diagnosisHistory.month],
-            systolic: [diagnosisHistory.blood_pressure.systolic.value],
-            diastolic: [diagnosisHistory.blood_pressure.diastolic.value],
-          }}
-        />
+      <div className=" bg-gray-50 rounded-xl mb-6">
+        <BloodPressureChart data={diagnosisHistory} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-[#072635]">
