@@ -1,13 +1,39 @@
+import React from "react";
 import Image from "next/image";
-import type React from "react";
+import { PiCalendarBlank, PiGenderIntersex, PiPhone, PiFirstAid, PiShieldStar } from "react-icons/pi";
 import type { Patient } from "@/types";
 
 interface PatientDetailsProps {
   patient: Patient | null;
 }
 
+// InfoItem component to reduce repetition
+const InfoItem = ({ icon: Icon, label, value }: { 
+  icon: React.ElementType;
+  label: string;
+  value: string;
+}) => (
+  <div className="flex items-center gap-2">
+    <div className="bg-[#F6F7F8] p-2 rounded-full">
+      <Icon size={22} />
+    </div>
+    <div>
+      <p className="text-sm text-gray-600">{label}</p>
+      <p className="font-semibold">{value}</p>
+    </div>
+  </div>
+);
+
 export const PatientDetails: React.FC<PatientDetailsProps> = ({ patient }) => {
   if (!patient) return null;
+
+  const patientInfo = [
+    { icon: PiCalendarBlank, label: "Date Of Birth", value: patient.date_of_birth },
+    { icon: PiGenderIntersex, label: "Gender", value: patient.gender },
+    { icon: PiPhone, label: "Contact Info.", value: patient.phone_number },
+    { icon: PiFirstAid, label: "Emergency Contacts", value: patient.emergency_contact },
+    { icon: PiShieldStar, label: "Insurance Provider", value: patient.insurance_type },
+  ];
 
   return (
     <div className="bg-white rounded-2xl p-6">
@@ -23,26 +49,14 @@ export const PatientDetails: React.FC<PatientDetailsProps> = ({ patient }) => {
       </div>
 
       <div className="space-y-4">
-        <div>
-          <p className="text-sm text-gray-600">Date Of Birth</p>
-          <p className="font-semibold">{patient.date_of_birth}</p>
-        </div>
-        <div>
-          <p className="text-sm text-gray-600">Gender</p>
-          <p className="font-semibold">{patient.gender}</p>
-        </div>
-        <div>
-          <p className="text-sm text-gray-600">Contact Info.</p>
-          <p className="font-semibold">{patient.phone_number}</p>
-        </div>
-        <div>
-          <p className="text-sm text-gray-600">Emergency Contacts</p>
-          <p className="font-semibold">{patient.emergency_contact}</p>
-        </div>
-        <div>
-          <p className="text-sm text-gray-600">Insurance Provider</p>
-          <p className="font-semibold">{patient.insurance_type}</p>
-        </div>
+        {patientInfo.map((info) => (
+          <InfoItem 
+            key={info.label}
+            icon={info.icon}
+            label={info.label}
+            value={info.value}
+          />
+        ))}
       </div>
 
       <button className="w-full bg-[#00FFC2] text-[#072635] font-semibold py-2 rounded-full mt-6">

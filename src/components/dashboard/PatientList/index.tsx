@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { BiSearch } from "react-icons/bi";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import { BsThreeDots } from "react-icons/bs";
 import type { Patient } from "@/types";
 
 interface PatientListProps {
@@ -26,8 +26,8 @@ export const PatientList: React.FC<PatientListProps> = ({
   );
 
   return (
-    <div className="w-full lg:w-72 bg-white rounded-2xl p-4 flex flex-col lg:h-[calc(100vh-9rem)] h-[calc(100vh-33rem)]">
-      <div className="mb-6">
+    <div className="w-full lg:w-72 bg-white rounded-2xl flex flex-col lg:h-[calc(100vh-9rem)] h-[calc(100vh-33rem)]">
+      <div className="mb-6 p-4">
         <h2 className="text-xl font-bold text-[#072635] mb-4">Patients</h2>
         <div className="relative">
           <BiSearch
@@ -58,7 +58,7 @@ export const PatientList: React.FC<PatientListProps> = ({
             {filteredPatients.map((patient) => (
               <div
                 key={patient.name}
-                className={`flex items-center justify-between p-2 cursor-pointer hover:bg-gray-50 rounded-lg transition-colors ${
+                className={`flex items-center justify-between p-2 cursor-pointer transition-colors ${
                   selectedPatient?.name === patient.name
                     ? "bg-[#D8FCF7]"
                     : ""
@@ -80,7 +80,7 @@ export const PatientList: React.FC<PatientListProps> = ({
                     </p>
                   </div>
                 </div>
-                <BsThreeDotsVertical className="text-gray-400" />
+                <BsThreeDots color="#072635" size={22} />
               </div>
             ))}
           </div>
