@@ -44,7 +44,7 @@ export default function Home() {
         <DiagnosticList diagnostics={selectedPatient?.diagnostic_list || []} />
       </div>
       <div className="w-full lg:w-80">
-        <div className="space-y-6">
+        <div className="space-y-6 mb-6 lg:mb-0">
           <PatientDetails patient={selectedPatient} />
           <LabResults labResults={selectedPatient?.lab_results || []} />
         </div>

@@ -20,7 +20,7 @@ export const PatientList: React.FC<PatientListProps> = ({
   error,
 }) => {
   return (
-    <div className="w-full lg:w-72 bg-white rounded-2xl p-4 flex flex-col h-[calc(100vh-8rem)]">
+    <div className="w-full lg:w-72 bg-white rounded-2xl p-4 flex flex-col lg:h-[calc(100vh-9rem)] h-[calc(100vh-33rem)]">
       <div className="mb-6">
         <h2 className="text-xl font-bold text-[#072635] mb-4">Patients</h2>
         <div className="relative">

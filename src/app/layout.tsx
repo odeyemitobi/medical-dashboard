@@ -19,11 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${manrope.variable} font-sans bg-[#F6F7F8] opacity-100`} suppressHydrationWarning={true}>
-        <div className="min-h-screen">
+    <html lang="en" className="h-full lg:overflow-hidden">
+      <body className={`${manrope.variable} font-sans bg-[#F6F7F8] h-full lg:overflow-hidden`} suppressHydrationWarning={true}>
+        <div className="h-full">
           <Navbar />
-          <main className="mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-24">
+          <main className="h-[calc(100vh-6rem)] mt-24 mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:overflow-hidden">
             {children}
           </main>
         </div>

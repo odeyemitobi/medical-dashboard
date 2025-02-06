@@ -9,7 +9,7 @@ export const DiagnosticList: React.FC<DiagnosticListProps> = ({ diagnostics = []
   return (
     <div className="bg-white rounded-2xl p-6">
       <h2 className="text-xl font-bold text-[#072635] mb-6">Diagnostic List</h2>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto overflow-y-auto lg:h-[calc(100vh-47.7rem)] h-[calc(100vh-45rem)]">
         <table className="w-full">
           <thead>
             <tr className="text-left text-sm text-gray-600">
