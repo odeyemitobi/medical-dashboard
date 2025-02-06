@@ -1,21 +1,79 @@
-import type React from "react"
-import { FaLungs, FaThermometerHalf } from "react-icons/fa"
-import { AiOutlineHeart } from "react-icons/ai"
-import { BloodPressureChart } from "@/components/dashboard/BloodPressureChart"
-import type { DiagnosisHistoryEntry } from "@/types"
+import type React from "react";
+import { BloodPressureChart } from "@/components/dashboard/BloodPressureChart";
+import type { DiagnosisHistoryEntry } from "@/types";
+import Image from "next/image";
 
-interface DiagnosisHistoryProps {
-  diagnosisHistory?: DiagnosisHistoryEntry
+interface MetricCardProps {
+  bgColor: string;
+  icon: string;
+  title: string;
+  value: number | string;
+  unit: string;
+  levels: string;
 }
 
-export const DiagnosisHistory: React.FC<DiagnosisHistoryProps> = ({ diagnosisHistory }) => {
-  if (!diagnosisHistory) return null
+const MetricCard: React.FC<MetricCardProps> = ({
+  bgColor,
+  icon,
+  title,
+  value,
+  unit,
+  levels,
+}) => (
+  <div className={`${bgColor} rounded-2xl p-4`}>
+    <div className="mb-3">
+      <Image src={icon} alt={title} width={100} height={100} />
+    </div>
+    <h3 className="text-sm">{title}</h3>
+    <p className="text-4xl font-bold">
+      {value} {unit}
+    </p>
+    <div className="text-sm mt-4">{levels}</div>
+  </div>
+);
+
+interface DiagnosisHistoryProps {
+  diagnosisHistory?: DiagnosisHistoryEntry;
+}
+
+export const DiagnosisHistory: React.FC<DiagnosisHistoryProps> = ({
+  diagnosisHistory,
+}) => {
+  if (!diagnosisHistory) return null;
+
+  const metrics = [
+    {
+      bgColor: "bg-[#E0F3FA]",
+      icon: "/lungs.svg",
+      title: "Respiratory Rate",
+      value: diagnosisHistory.respiratory_rate.value,
+      unit: "bpm",
+      levels: diagnosisHistory.respiratory_rate.levels,
+    },
+    {
+      bgColor: "bg-[#FFE6E9]",
+      icon: "/heart.svg",
+      title: "Heart Rate",
+      value: diagnosisHistory.heart_rate.value,
+      unit: "bpm",
+      levels: diagnosisHistory.heart_rate.levels,
+    },
+    {
+      bgColor: "bg-[#FFE6F1]",
+      icon: "/temp.svg",
+      title: "Temperature",
+      value: diagnosisHistory.temperature.value,
+      unit: "°F",
+      levels: diagnosisHistory.temperature.levels,
+    },
+  ];
 
   return (
     <div className="bg-white rounded-2xl p-6">
-      <h2 className="text-xl font-bold text-[#072635] mb-6">Diagnosis History</h2>
+      <h2 className="text-xl font-bold text-[#072635] mb-6">
+        Diagnosis History
+      </h2>
 
-      {/* Blood Pressure Chart */}
       <div className="h-64 bg-gray-50 rounded-xl mb-6">
         <BloodPressureChart
           data={{
@@ -26,36 +84,11 @@ export const DiagnosisHistory: React.FC<DiagnosisHistoryProps> = ({ diagnosisHis
         />
       </div>
 
-      {/* Metric Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-[#EBF9FF] rounded-xl p-4">
-          <div className="flex items-center justify-between mb-2">
-            <FaLungs className="text-blue-500" size={24} />
-            <span className="text-sm text-gray-600">{diagnosisHistory.respiratory_rate.levels}</span>
-          </div>
-          <h3 className="text-sm text-gray-600">Respiratory Rate</h3>
-          <p className="text-2xl font-bold">{diagnosisHistory.respiratory_rate.value} bpm</p>
-        </div>
-
-        <div className="bg-[#FFF5F5] rounded-xl p-4">
-          <div className="flex items-center justify-between mb-2">
-            <FaThermometerHalf className="text-red-500" size={24} />
-            <span className="text-sm text-gray-600">{diagnosisHistory.temperature.levels}</span>
-          </div>
-          <h3 className="text-sm text-gray-600">Temperature</h3>
-          <p className="text-2xl font-bold">{diagnosisHistory.temperature.value}°F</p>
-        </div>
-
-        <div className="bg-[#FFF5F5] rounded-xl p-4">
-          <div className="flex items-center justify-between mb-2">
-            <AiOutlineHeart className="text-red-500" size={24} />
-            <span className="text-sm text-gray-600">{diagnosisHistory.heart_rate.levels}</span>
-          </div>
-          <h3 className="text-sm text-gray-600">Heart Rate</h3>
-          <p className="text-2xl font-bold">{diagnosisHistory.heart_rate.value} bpm</p>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-[#072635]">
+        {metrics.map((metric) => (
+          <MetricCard key={metric.title} {...metric} />
+        ))}
       </div>
     </div>
-  )
-}
-
+  );
+};

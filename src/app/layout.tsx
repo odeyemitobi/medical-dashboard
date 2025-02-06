@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={`${manrope.variable} font-sans bg-[#F6F7F8] h-full lg:overflow-hidden`} suppressHydrationWarning={true}>
         <div className="h-full">
           <Navbar />
-          <main className="h-[calc(100vh-6rem)] mt-24 mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:overflow-hidden">
+          <main className="h-[calc(100vh-6rem)] lg:mt-24 mt-16 mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:overflow-hidden">
             {children}
           </main>
         </div>
