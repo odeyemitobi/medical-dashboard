@@ -22,8 +22,8 @@ export const Navbar: React.FC = () => {
     <>
       <Link
         href="/overview"
-        className={`flex items-center font-semibold gap-2 text-[#072635] md:px-4 md:py-2 md:rounded-full transition-all ${
-          pathname === "/overview" ? "md:bg-[#00FFC2]" : ""
+        className={`flex items-center font-semibold gap-2 text-[#072635] lg:px-4 lg:py-2 lg:rounded-full transition-all ${
+          pathname === "/overview" ? "lg:bg-[#00FFC2]" : ""
         }`}
         onClick={() => setIsOpen(false)}
       >
@@ -34,8 +34,8 @@ export const Navbar: React.FC = () => {
       </Link>
       <Link
         href="/patients"
-        className={`flex items-center font-semibold gap-2 text-[#072635] md:px-4 md:py-2 md:rounded-full transition-all ${
-          pathname === "/patients" || pathname === "/" ? "md:bg-[#00FFC2]" : ""
+        className={`flex items-center font-semibold gap-2 text-[#072635] lg:px-4 lg:py-2 lg:rounded-full transition-all ${
+          pathname === "/patients" || pathname === "/" ? "lg:bg-[#00FFC2]" : ""
         }`}
         onClick={() => setIsOpen(false)}
       >
@@ -53,8 +53,8 @@ export const Navbar: React.FC = () => {
       </Link>
       <Link
         href="/schedule"
-        className={`flex items-center font-semibold gap-2 text-[#072635] md:px-4 md:py-2 md:rounded-full transition-all ${
-          pathname === "/schedule" ? "md:bg-[#00FFC2]" : ""
+        className={`flex items-center font-semibold gap-2 text-[#072635] lg:px-4 lg:py-2 lg:rounded-full transition-all ${
+          pathname === "/schedule" ? "lg:bg-[#00FFC2]" : ""
         }`}
         onClick={() => setIsOpen(false)}
       >
@@ -65,8 +65,8 @@ export const Navbar: React.FC = () => {
       </Link>
       <Link
         href="/message"
-        className={`flex items-center font-semibold gap-2 text-[#072635] md:px-4 md:py-2 md:rounded-full transition-all ${
-          pathname === "/message" ? "md:bg-[#00FFC2]" : ""
+        className={`flex items-center font-semibold gap-2 text-[#072635] lg:px-4 lg:py-2 lg:rounded-full transition-all ${
+          pathname === "/message" ? "lg:bg-[#00FFC2]" : ""
         }`}
         onClick={() => setIsOpen(false)}
       >
@@ -77,8 +77,8 @@ export const Navbar: React.FC = () => {
       </Link>
       <Link
         href="/transactions"
-        className={`flex items-center font-semibold gap-2 text-[#072635] md:px-4 md:py-2 md:rounded-full transition-all ${
-          pathname === "/transactions" ? "md:bg-[#00FFC2]" : ""
+        className={`flex items-center font-semibold gap-2 text-[#072635] lg:px-4 lg:py-2 lg:rounded-full transition-all ${
+          pathname === "/transactions" ? "lg:bg-[#00FFC2]" : ""
         }`}
         onClick={() => setIsOpen(false)}
       >
@@ -94,12 +94,12 @@ export const Navbar: React.FC = () => {
     <>
       <div className="fixed top-0 left-0 right-0 h-20 bg-[#F6F7F8] z-40" />
       <nav className="fixed top-4 left-4 right-4 z-50">
-        <div className="bg-white rounded-full shadow-md px-4 py-3 md:px-6 md:py-4 mx-auto max-w-[98%]">
+        <div className="bg-white rounded-full shadow-lg px-4 py-3 lg:px-6 lg:py-4 mx-auto max-w-[98%]">
           <div className="flex items-center justify-between">
             {/* Logo Section */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
-                <div className="relative w-32 md:w-52">
+                <div className="relative w-32 lg:w-52">
                   <Image
                     src="/T.C.svg"
                     alt="Tech.Care Logo"
@@ -113,14 +113,14 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Navigation Links (Desktop) */}
-            <div className="hidden md:flex items-center xlg:space-x-4 space-x-2">
+            <div className="hidden lg:flex items-center xlg:space-x-4 space-x-2">
               <NavLinks />
             </div>
 
             {/* Profile Section */}
-            <div className="flex cursor-pointer items-center space-x-2 md:space-x-4">
-              <div className="flex items-center md:border-r md:pr-5">
-                <div className="relative w-8 h-8 md:w-10 md:h-10">
+            <div className="flex cursor-pointer items-center space-x-2 lg:space-x-4">
+              <div className="flex items-center lg:border-r lg:pr-5">
+                <div className="relative w-8 h-8 lg:w-10 lg:h-10">
                   <Image
                     src="/snr-doc.png"
                     alt="Dr. Jose Simmons"
@@ -129,7 +129,7 @@ export const Navbar: React.FC = () => {
                     className="rounded-full"
                   />
                 </div>
-                <div className="ml-3 hidden md:block">
+                <div className="ml-3 hidden lg:block">
                   <div className="text-sm font-bold text-[#072635]">
                     Dr. Jose Simmons
                   </div>
@@ -142,13 +142,13 @@ export const Navbar: React.FC = () => {
                 <div>
                   <FaCog color="#072635" size={26} />
                 </div>
-                <div className="hidden md:block">
+                <div className="hidden lg:block">
                   <HiDotsVertical color="#072635" size={26} />
                 </div>
               </div>
 
               {/* Hamburger Menu (Mobile) */}
-              <div className="md:hidden">
+              <div className="lg:hidden">
                 <div onClick={toggleMenu} className="">
                   <HiMenu color="#072635" size={26} />
                 </div>
